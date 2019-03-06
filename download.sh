@@ -16,7 +16,7 @@ if [ ! -f "hdf5-${HDF5_VER}.tar.gz" ]; then
 fi
 
 if [ ! -f "cgnslib_${CGNSLIB_VER}.tar.gz" ]; then
-  wget https://github.com/CGNS/CGNS/archive/v${CGNSLIB_VER}.tar.gz -o cgnslib_${CGNSLIB_VER}.tar.gz
+  wget https://github.com/CGNS/CGNS/archive/v${CGNSLIB_VER}.tar.gz -O cgnslib_${CGNSLIB_VER}.tar.gz
 fi
 
 if [ ! -f "iriclib-${IRICLIB_VER:0:7}.zip" ]; then
