@@ -32,11 +32,9 @@ endif()
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
   if("${CONF_DIR}" STREQUAL "debug")
     set(HDF_LIB "${CTEST_SCRIPT_DIRECTORY}/lib/install/hdf5-${HDF5_VER}/${CONF_DIR}/lib/libhdf5_debug.so")
-    set(SZIP_LIB "${CTEST_SCRIPT_DIRECTORY}/lib/install/hdf5-${HDF5_VER}/${CONF_DIR}/lib/libszip_debug.so")
     set(ZLIB_LIB "${CTEST_SCRIPT_DIRECTORY}/lib/install/hdf5-${HDF5_VER}/${CONF_DIR}/lib/libz_debug.so")
   else()
     set(HDF_LIB "${CTEST_SCRIPT_DIRECTORY}/lib/install/hdf5-${HDF5_VER}/${CONF_DIR}/lib/libhdf5.so")
-    set(SZIP_LIB "${CTEST_SCRIPT_DIRECTORY}/lib/install/hdf5-${HDF5_VER}/${CONF_DIR}/lib/libszip.so")
     set(ZLIB_LIB "${CTEST_SCRIPT_DIRECTORY}/lib/install/hdf5-${HDF5_VER}/${CONF_DIR}/lib/libz.so")
   endif()
 endif()
@@ -50,13 +48,12 @@ set(BUILD_OPTIONS
 -DCGNS_ENABLE_LFS:BOOL=ON
 -DHDF5_INCLUDE_PATH:PATH=${HDF_INC}
 -DHDF5_LIBRARY:FILEPATH=${HDF_LIB}
--DHDF5_NEED_SZIP:BOOL=ON
+-DHDF5_NEED_SZIP:BOOL=OFF
 -DHDF5_NEED_ZLIB:BOOL=ON
 )
 
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
   list(APPEND BUILD_OPTIONS "-DCMAKE_C_FLAGS:STRING=-D_LARGEFILE64_SOURCE")
-  list(APPEND BUILD_OPTIONS "-DSZIP_LIBRARY:STRING=${SZIP_LIB}")
   list(APPEND BUILD_OPTIONS "-DZLIB_LIBRARY:STRING=${ZLIB_LIB}")
 endif()
 
