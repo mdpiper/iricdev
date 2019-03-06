@@ -15,7 +15,7 @@ rm -rf lib/install/cgnslib-$VER
 mkdir -p lib/src
 cd lib/src
 tar xvzf ../../cgnslib_$VER.tar.gz
-mv cgnslib_$VER cgnslib-$VER
+mv CGNS-$VER cgnslib-$VER
 cd ../..
 
 ctest -S build-cgnslib.cmake -DCONF_DIR:STRING=debug   "-DCTEST_CMAKE_GENERATOR:STRING=${GENERATOR}" -C Debug   -VV -O ${SGEN}-cgnslib-debug.log
